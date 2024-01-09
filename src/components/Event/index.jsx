@@ -13,6 +13,17 @@ class MyEvent extends React.Component {
     this.setState({ name: e.target.value });
   };
 
+  focusHandler = (e) => {
+    console.log("I'm focused");
+  };
+
+  blurHandler = (e) => {
+    if (!this.state.name) {
+      alert("Input your name");
+    }
+    console.log("I am blur event");
+  };
+
   render() {
     return (
       <div style={{ marginTop: "50px" }}>
@@ -26,6 +37,8 @@ class MyEvent extends React.Component {
             id="name"
             placeholder="Your name here"
             onChange={this.onChangeHandle}
+            onFocus={this.focusHandler}
+            onBlur={this.blurHandler}
           />
 
           <br />
