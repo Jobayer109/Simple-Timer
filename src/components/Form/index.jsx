@@ -6,14 +6,20 @@ class MyForm extends Component {
     country: "",
     bio: "",
     birthDay: "",
+    radio: "",
+    agree: false,
   };
 
   onChangeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  checkHandler = (event) => {
+    this.setState({ agree: event.target.checked });
+  };
+
   render() {
-    const { name, country, bio, birthDay } = this.state;
+    const { name, country, bio, birthDay, agree } = this.state;
     return (
       <div>
         <input
@@ -53,7 +59,45 @@ class MyForm extends Component {
         />
 
         <div>
-          <button onClick={() => console.log(this.state)}>Show Data</button>
+          <input
+            type="radio"
+            name="radio"
+            value="male"
+            onChange={this.onChangeHandler}
+          />{" "}
+          Male
+          <input
+            type="radio"
+            name="radio"
+            value="female"
+            onChange={this.onChangeHandler}
+          />{" "}
+          Female
+          <input
+            type="radio"
+            name="radio"
+            value="other"
+            onChange={this.onChangeHandler}
+          />{" "}
+          Other
+        </div>
+
+        <div>
+          <input
+            type="checkBox"
+            name="agree"
+            checked={agree}
+            onChange={this.checkHandler}
+          />{" "}
+          I Agree
+        </div>
+
+        <div onClick={() => console.log(this.state)}>
+          {this.state.agree ? (
+            <button>Show Data</button>
+          ) : (
+            <button disabled>Show Data</button>
+          )}
         </div>
       </div>
     );
