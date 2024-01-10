@@ -8,6 +8,7 @@ class MyForm extends Component {
     birthDay: "",
     radio: "",
     agree: false,
+    skills: [],
   };
 
   onChangeHandler = (e) => {
@@ -18,46 +19,58 @@ class MyForm extends Component {
     this.setState({ agree: event.target.checked });
   };
 
+  proCheckBoxHandler = (e) => {
+    if (e.target.checked) {
+      this.setState({ skills: [...this.state.skills, e.target.value] });
+    } else {
+      const skills = this.state.skills.filter(
+        (skill) => skill !== e.target.value
+      );
+      this.setState({ skills });
+    }
+  };
+
   render() {
-    const { name, country, bio, birthDay, agree } = this.state;
+    const { name, country, bio, birthDay, agree, skills } = this.state;
     return (
       <div>
-        <input
-          className="form-control my-2"
-          type="text"
-          name="name"
-          value={name}
-          placeholder="Your name hare"
-          onChange={this.onChangeHandler}
-        />
-        <select
-          name="country"
-          value={country}
-          className="form-control my-2"
-          onChange={this.onChangeHandler}
-        >
-          <option>Select a country</option>
-          <option value="Bangladesh">Bangladesh</option>
-          <option value="India">India</option>
-          <option value="Pakistan">Pakistan</option>
-          <option value="Malaysia">Malaysia</option>
-        </select>
-
-        <textarea
-          className="form-control my-2"
-          name="bio"
-          value={bio}
-          placeholder="Write about yourself"
-          onChange={this.onChangeHandler}
-        ></textarea>
-        <input
-          className="form-control my-2"
-          type="date"
-          name="birthDay"
-          value={birthDay}
-          onChange={this.onChangeHandler}
-        />
-
+        <div>
+          {" "}
+          <input
+            className="form-control my-2"
+            type="text"
+            name="name"
+            value={name}
+            placeholder="Your name hare"
+            onChange={this.onChangeHandler}
+          />
+          <select
+            name="country"
+            value={country}
+            className="form-control my-2"
+            onChange={this.onChangeHandler}
+          >
+            <option>Select a country</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="India">India</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Malaysia">Malaysia</option>
+          </select>
+          <textarea
+            className="form-control my-2"
+            name="bio"
+            value={bio}
+            placeholder="Write about yourself"
+            onChange={this.onChangeHandler}
+          ></textarea>
+          <input
+            className="form-control my-2"
+            type="date"
+            name="birthDay"
+            value={birthDay}
+            onChange={this.onChangeHandler}
+          />
+        </div>
         <div>
           <input
             type="radio"
@@ -80,6 +93,40 @@ class MyForm extends Component {
             onChange={this.onChangeHandler}
           />{" "}
           Other
+        </div>
+        <div>
+          <input
+            type="checkBox"
+            name="skills"
+            value="Java"
+            checked={skills.includes("Java")}
+            onChange={this.proCheckBoxHandler}
+          />{" "}
+          Java
+          <input
+            type="checkBox"
+            name="skills"
+            value="Javascript"
+            checked={skills.includes("Javascript")}
+            onChange={this.proCheckBoxHandler}
+          />{" "}
+          Javascript
+          <input
+            type="checkBox"
+            name="skills"
+            value="Python"
+            checked={skills.includes("Python")}
+            onChange={this.proCheckBoxHandler}
+          />{" "}
+          Python
+          <input
+            type="checkBox"
+            name="skills"
+            value="GoLang"
+            checked={skills.includes("GoLang")}
+            onChange={this.proCheckBoxHandler}
+          />{" "}
+          GoLang
         </div>
 
         <div>
