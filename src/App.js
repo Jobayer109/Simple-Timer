@@ -1,5 +1,6 @@
 import "./App.css";
 import MyEvent from "./components/Event";
+import MyForm from "./components/Form";
 import MyTimer from "./components/Timer";
 
 function App() {
@@ -8,6 +9,8 @@ function App() {
       <MyTimer />
 
       <MyEvent />
+
+      <MyForm />
     </duv>
   );
 }
