@@ -8,13 +8,15 @@ class UnControlledForm extends React.Component {
       email: event.target.email.value,
       password: event.target.password.value,
     };
+    event.target.reset();
+
     console.log(data);
   };
 
   render() {
     return (
       <div style={{ marginTop: "40px" }}>
-        <h1>Un-controlled Form </h1>
+        <h3>Un-controlled Form without React</h3>
 
         <form onSubmit={this.formHandler}>
           <input
